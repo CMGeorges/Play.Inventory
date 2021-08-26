@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "0ew7JQ7Fdu1f7ZrN7SI0ca9kXeOd93t26ZQkfzV/qTl947x//AhFswTKAEgrfDqwRL4Qnj/Y+2CqvF5BKfTozg==",
+  "dgSpecHash": "6sLDaDAw0mKV9mg6AIyF6vd0Mrm6C6aYA+EUciG+frGcj5qLo9judv2X2tnRoq9KtuTHwLp9ZKkPFEQpPKXyAw==",
   "success": true,
   "projectFilePath": "F:\\camsl\\Documents\\Code\\Play\\Play.Inventory\\src\\Play.Inventory.Service\\Play.Inventory.Service.csproj",
   "expectedPackageFiles": [
@@ -11,6 +11,7 @@
     "C:\\Users\\camsl\\.nuget\\packages\\masstransit.aspnetcore\\7.1.4\\masstransit.aspnetcore.7.1.4.nupkg.sha512",
     "C:\\Users\\camsl\\.nuget\\packages\\masstransit.extensions.dependencyinjection\\7.1.4\\masstransit.extensions.dependencyinjection.7.1.4.nupkg.sha512",
     "C:\\Users\\camsl\\.nuget\\packages\\masstransit.rabbitmq\\7.1.4\\masstransit.rabbitmq.7.1.4.nupkg.sha512",
+    "C:\\Users\\camsl\\.nuget\\packages\\microsoft.aspnet.webapi.client\\5.2.7\\microsoft.aspnet.webapi.client.5.2.7.nupkg.sha512",
     "C:\\Users\\camsl\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\camsl\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "C:\\Users\\camsl\\.nuget\\packages\\microsoft.extensions.configuration\\5.0.0\\microsoft.extensions.configuration.5.0.0.nupkg.sha512",

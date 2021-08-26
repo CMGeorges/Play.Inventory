@@ -49,3 +49,4 @@ F:\camsl\Documents\Code\Play\Play.Inventory\src\Play.Inventory.Service\obj\Debug
 F:\camsl\Documents\Code\Play\Play.Inventory\src\Play.Inventory.Service\obj\Debug\net5.0\ref\Play.Inventory.Service.dll
 F:\camsl\Documents\Code\Play\Play.Inventory\src\Play.Inventory.Service\obj\Debug\net5.0\Play.Inventory.Service.pdb
 F:\camsl\Documents\Code\Play\Play.Inventory\src\Play.Inventory.Service\obj\Debug\net5.0\Play.Inventory.Service.genruntimeconfig.cache
+F:\camsl\Documents\Code\Play\Play.Inventory\src\Play.Inventory.Service\bin\Debug\net5.0\System.Net.Http.Formatting.dll

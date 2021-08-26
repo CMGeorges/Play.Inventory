@@ -102,6 +102,19 @@
           "lib/netstandard2.0/MassTransit.RabbitMqTransport.dll": {}
         }
       },
+      "Microsoft.AspNet.WebApi.Client/5.2.7": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "10.0.1",
+          "Newtonsoft.Json.Bson": "1.0.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/System.Net.Http.Formatting.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Net.Http.Formatting.dll": {}
+        }
+      },
       "Microsoft.Bcl.AsyncInterfaces/1.1.1": {
         "type": "package",
         "compile": {
@@ -1823,6 +1836,23 @@
         "masstransit.rabbitmq.7.1.4.nupkg.sha512",
         "masstransit.rabbitmq.nuspec",
         "mt-logo-small.png"
+      ]
+    },
+    "Microsoft.AspNet.WebApi.Client/5.2.7": {
+      "sha512": "/76fAHknzvFqbznS6Uj2sOyE9rJB3PltY+f53TH8dX9RiGhk02EhuFCWljSj5nnqKaTsmma8DFR50OGyQ4yJ1g==",
+      "type": "package",
+      "path": "microsoft.aspnet.webapi.client/5.2.7",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net45/System.Net.Http.Formatting.dll",
+        "lib/net45/System.Net.Http.Formatting.xml",
+        "lib/netstandard2.0/System.Net.Http.Formatting.dll",
+        "lib/netstandard2.0/System.Net.Http.Formatting.xml",
+        "lib/portable-wp8+netcore45+net45+wp81+wpa81/System.Net.Http.Formatting.dll",
+        "lib/portable-wp8+netcore45+net45+wp81+wpa81/System.Net.Http.Formatting.xml",
+        "microsoft.aspnet.webapi.client.5.2.7.nupkg.sha512",
+        "microsoft.aspnet.webapi.client.nuspec"
       ]
     },
     "Microsoft.Bcl.AsyncInterfaces/1.1.1": {
@@ -5917,6 +5947,7 @@
   },
   "projectFileDependencyGroups": {
     "net5.0": [
+      "Microsoft.AspNet.WebApi.Client >= 5.2.7",
       "Play.Common >= 1.0.2",
       "Swashbuckle.AspNetCore >= 5.6.3"
     ]
@@ -5929,11 +5960,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\camsl\\Documents\\Code\\Play\\Play.Inventory\\src\\Play.Inventory.Service\\Play.Inventory.Service.csproj",
+      "projectUniqueName": "f:\\camsl\\Documents\\Code\\Play\\Play.Inventory\\src\\Play.Inventory.Service\\Play.Inventory.Service.csproj",
       "projectName": "Play.Inventory.Service",
-      "projectPath": "F:\\camsl\\Documents\\Code\\Play\\Play.Inventory\\src\\Play.Inventory.Service\\Play.Inventory.Service.csproj",
+      "projectPath": "f:\\camsl\\Documents\\Code\\Play\\Play.Inventory\\src\\Play.Inventory.Service\\Play.Inventory.Service.csproj",
       "packagesPath": "C:\\Users\\camsl\\.nuget\\packages\\",
-      "outputPath": "F:\\camsl\\Documents\\Code\\Play\\Play.Inventory\\src\\Play.Inventory.Service\\obj\\",
+      "outputPath": "f:\\camsl\\Documents\\Code\\Play\\Play.Inventory\\src\\Play.Inventory.Service\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -5969,6 +6000,10 @@
       "net5.0": {
         "targetAlias": "net5.0",
         "dependencies": {
+          "Microsoft.AspNet.WebApi.Client": {
+            "target": "Package",
+            "version": "[5.2.7, )"
+          },
           "Play.Common": {
             "target": "Package",
             "version": "[1.0.2, )"
