@@ -15,6 +15,8 @@ using Play.Common.MongoDB;
 using Play.Inventory.Service.Clients;
 using Play.Inventory.Service.Entities;
 using Polly;
+using Microsoft.Extensions.Logging;
+using Polly.Timeout;
 
 namespace Play.Inventory.Service
 {
@@ -40,14 +42,14 @@ namespace Play.Inventory.Service
             })
             .AddTransientHttpErrorPolicy(builder => builder.Or<TimeoutRejectedException>().WaitAndRetryAsync(
                 5,
-                retryAttempt => TimeSpan.FromSeconds(Match.Pow(2, retryAttempt)),
-                onRetry: (outcome, timsespan, retryAttempt) =>
+                retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)),
+                onRetry: (outcome, timespan, retryAttempt) =>
                 {
-                    var serviceProvider = ServerCertificateSelectionCallback.BuildServiceProvider();
-                    AesCryptoServiceProvider.GetService<ILogger<CatalogClient>>()?
+                    var serviceProvider = services.BuildServiceProvider();
+                    serviceProvider.GetService<ILogger<CatalogClient>>()?
                                             .LogWarning($"Delaying for  {timespan.TotalSeconds} seconds, then making retry {retryAttempt}");
                 }
-            ));//To taking care of Network failure - Http 5XX status codes - Http 408 status code
+            ))//To taking care of Network failure - Http 5XX status codes - Http 408 status code
             .AddPolicyHandler(Policy.TimeoutAsync<HttpResponseMessage>(1));
 
             services.AddControllers();
