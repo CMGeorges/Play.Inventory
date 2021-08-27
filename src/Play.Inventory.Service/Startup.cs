@@ -1,3 +1,4 @@
+using System.Threading;
 using System.Security.Cryptography;
 using System.Net.Security;
 using System.Text.RegularExpressions;
@@ -37,7 +38,7 @@ namespace Play.Inventory.Service
             {
                 client.BaseAddress = new System.Uri("https://localhost:5001");
             })
-            .AddTransientHttpErrorPolicy(builder => builder.WaitAndRetryAsync(
+            .AddTransientHttpErrorPolicy(builder => builder.Or<TimeoutRejectedException>().WaitAndRetryAsync(
                 5,
                 retryAttempt => TimeSpan.FromSeconds(Match.Pow(2, retryAttempt)),
                 onRetry: (outcome, timsespan, retryAttempt) =>
