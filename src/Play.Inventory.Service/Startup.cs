@@ -18,6 +18,8 @@ using Play.Inventory.Service.Entities;
 using Polly;
 using Microsoft.Extensions.Logging;
 using Polly.Timeout;
+using MassTransit;
+using Play.Common.MassTransit;
 
 namespace Play.Inventory.Service
 {
@@ -35,43 +37,11 @@ namespace Play.Inventory.Service
         {
 
             services.AddMongo()
-            .AddMongoRepository<InventoryItem>("inventoryitems");
+            .AddMongoRepository<InventoryItem>("inventoryitems")
+            .AddMongoRepository<CatalogItem>("catalogitems")
+            .AddMasstransitWithRabbitMq();
 
-            Random  jitterer = new Random();
-
-            services.AddHttpClient<CatalogClient>(client => 
-            {
-                client.BaseAddress = new System.Uri("https://localhost:5001");
-            })
-            .AddTransientHttpErrorPolicy(builder => builder.Or<TimeoutRejectedException>().WaitAndRetryAsync(
-                5,
-                retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt))
-                                + TimeSpan.FromMilliseconds(jitterer.Next(0,1000)),
-                onRetry: (outcome, timespan, retryAttempt) =>
-                {
-                    var serviceProvider = services.BuildServiceProvider();
-                    serviceProvider.GetService<ILogger<CatalogClient>>()?
-                                    .LogWarning($"Delaying for  {timespan.TotalSeconds} seconds, then making retry {retryAttempt}");
-                }
-            ))//To taking care of Network failure - Http 5XX status codes - Http 408 status code
-            .AddTransientHttpErrorPolicy(builder => builder.Or<TimeoutRejectedException>().CircuitBreakerAsync(
-                3,
-                TimeSpan.FromSeconds(15),
-                onBreak: (outcome, timespan)=>
-                { 
-                    var serviceProvider = services.BuildServiceProvider();
-                    serviceProvider.GetService<ILogger<CatalogClient>>()?
-                                    .LogWarning($"Opening  the circuit for  {timespan.TotalSeconds} seconds...");  
-                },
-                onReset: ()=>
-                {  
-                    var serviceProvider = services.BuildServiceProvider();
-                    serviceProvider.GetService<ILogger<CatalogClient>>()?
-                                    .LogWarning($"Closing the circuit...");
-
-                }
-            ))
-            .AddPolicyHandler(Policy.TimeoutAsync<HttpResponseMessage>(1));
+            AddCatalogClient(services);
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -101,5 +71,47 @@ namespace Play.Inventory.Service
                 endpoints.MapControllers();
             });
         }
+
+
+        private static void AddCatalogClient(IServiceCollection services)
+        {
+            Random jitterer = new Random();
+
+            services.AddHttpClient<CatalogClient>(client =>
+            {
+                client.BaseAddress = new System.Uri("https://localhost:5001");
+            })
+            .AddTransientHttpErrorPolicy(builder => builder.Or<TimeoutRejectedException>().WaitAndRetryAsync(
+                5,
+                retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt))
+                                + TimeSpan.FromMilliseconds(jitterer.Next(0, 1000)),
+                onRetry: (outcome, timespan, retryAttempt) =>
+                {
+                    var serviceProvider = services.BuildServiceProvider();
+                    serviceProvider.GetService<ILogger<CatalogClient>>()?
+                                    .LogWarning($"Delaying for  {timespan.TotalSeconds} seconds, then making retry {retryAttempt}");
+                }
+            ))//To taking care of Network failure - Http 5XX status codes - Http 408 status code
+            .AddTransientHttpErrorPolicy(builder => builder.Or<TimeoutRejectedException>().CircuitBreakerAsync(
+                3,
+                TimeSpan.FromSeconds(15),
+                onBreak: (outcome, timespan) =>
+                {
+                    var serviceProvider = services.BuildServiceProvider();
+                    serviceProvider.GetService<ILogger<CatalogClient>>()?
+                                    .LogWarning($"Opening  the circuit for  {timespan.TotalSeconds} seconds...");
+                },
+                onReset: () =>
+                {
+                    var serviceProvider = services.BuildServiceProvider();
+                    serviceProvider.GetService<ILogger<CatalogClient>>()?
+                                    .LogWarning($"Closing the circuit...");
+
+                }
+            ))
+            .AddPolicyHandler(Policy.TimeoutAsync<HttpResponseMessage>(1));
+        }
+
+
     }
 }
