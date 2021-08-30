@@ -1,30 +1,35 @@
-using System.ComponentModel;
-using System.Threading;
-using System.Security.Cryptography;
-using System.Net.Security;
-using System.Text.RegularExpressions;
 using System;
 using System.Collections.Immutable;
+using System.ComponentModel;
 using System.Net.Http;
+using System.Net.Security;
+using System.Security.Cryptography;
+using System.Text.RegularExpressions;
+using System.Threading;
+using MassTransit;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Play.Common.MassTransit;
 using Play.Common.MongoDB;
 using Play.Inventory.Service.Clients;
 using Play.Inventory.Service.Entities;
 using Polly;
-using Microsoft.Extensions.Logging;
 using Polly.Timeout;
-using MassTransit;
-using Play.Common.MassTransit;
 
 namespace Play.Inventory.Service
 {
     public class Startup
     {
+
+        #region Constant
+        private const string AllowedOriginSetting = "AllowedOrigin";
+
+        #endregion
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -39,7 +44,7 @@ namespace Play.Inventory.Service
             services.AddMongo()
             .AddMongoRepository<InventoryItem>("inventoryitems")
             .AddMongoRepository<CatalogItem>("catalogitems")
-            .AddMasstransitWithRabbitMq();
+            .AddMassTransitWithRabbitMq();
 
             AddCatalogClient(services);
 
@@ -58,6 +63,14 @@ namespace Play.Inventory.Service
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Play.Inventory.Service v1"));
+
+                app.UseCors(builder =>
+                {
+                    builder.WithOrigins(Configuration[AllowedOriginSetting])
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();
+                });
+
             }
 
             app.UseHttpsRedirection();
