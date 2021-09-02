@@ -1,12 +1,5 @@
 using System;
-using System.Collections.Immutable;
-using System.ComponentModel;
 using System.Net.Http;
-using System.Net.Security;
-using System.Security.Cryptography;
-using System.Text.RegularExpressions;
-using System.Threading;
-using MassTransit;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -14,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Play.Common.Identity;
 using Play.Common.MassTransit;
 using Play.Common.MongoDB;
 using Play.Inventory.Service.Clients;
@@ -44,11 +38,15 @@ namespace Play.Inventory.Service
             services.AddMongo()
             .AddMongoRepository<InventoryItem>("inventoryitems")
             .AddMongoRepository<CatalogItem>("catalogitems")
-            .AddMassTransitWithRabbitMq();
+            .AddMasstransitWithRabbitMq()
+            .AddJwtBearerAuthentication();
 
             AddCatalogClient(services);
 
-            services.AddControllers();
+            services.AddControllers(options =>
+            {
+                options.SuppressAsyncSuffixInActionNames = false;
+            });
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Play.Inventory.Service", Version = "v1" });
@@ -76,6 +74,8 @@ namespace Play.Inventory.Service
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 

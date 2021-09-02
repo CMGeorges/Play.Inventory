@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Play.Common;
-using Play.Inventory.Service.Clients;
 using Play.Inventory.Service.Dtos;
 using Play.Inventory.Service.Entities;
 
@@ -13,6 +13,7 @@ namespace Play.Inventory.Service.Controllers
 
     [ApiController]
     [Route("items")]
+    [Authorize]
     public class ItemsController : ControllerBase
     {
 
@@ -46,12 +47,12 @@ namespace Play.Inventory.Service.Controllers
             var inventoryItemEntities = await _inventoryItemsRepository.GetAllAsync(item => item.UserId == userId);
             //Gettings all CatalogItems from the local 
             var itemIds = inventoryItemEntities.Select(item => item.CatalogItemId);
-            var catalogItemsEntities = await _catalogItemsRepository.GetAllAsync( item => itemIds.Contains(item.Id));
+            var catalogItemsEntities = await _catalogItemsRepository.GetAllAsync(item => itemIds.Contains(item.Id));
 
-            var inventoryItemDtos = inventoryItemEntities.Select(inventoryItem => 
+            var inventoryItemDtos = inventoryItemEntities.Select(inventoryItem =>
             {
                 var catalogItem = catalogItemsEntities.Single(catalogItem => catalogItem.Id == inventoryItem.CatalogItemId);
-                return inventoryItem.AsDto(catalogItem.Name,catalogItem.Description);
+                return inventoryItem.AsDto(catalogItem.Name, catalogItem.Description);
             });
 
 
@@ -64,7 +65,7 @@ namespace Play.Inventory.Service.Controllers
             var inventoryItem = await _inventoryItemsRepository.GetAsync(
                 item => item.UserId == grantItemsDto.UserId && item.CatalogItemId == grantItemsDto.CatalogItemId);
 
-            if (inventoryItem == null )
+            if (inventoryItem == null)
             {
                 inventoryItem = new InventoryItem
                 {
@@ -75,7 +76,8 @@ namespace Play.Inventory.Service.Controllers
                 };
 
                 await _inventoryItemsRepository.CreateAsync(inventoryItem);
-            }else
+            }
+            else
             {
                 inventoryItem.Quantity += grantItemsDto.Quantity;
                 await _inventoryItemsRepository.UpdateAsync(inventoryItem);
