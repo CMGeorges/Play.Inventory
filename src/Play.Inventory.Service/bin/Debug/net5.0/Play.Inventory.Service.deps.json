@@ -33,10 +33,11 @@
     ".NETCoreApp,Version=v5.0": {
       "Play.Inventory.Service/1.0.0": {
         "dependencies": {
+          "CMGeorges.Play.Common": "1.0.3",
           "Microsoft.AspNet.WebApi.Client": "5.2.7",
           "Microsoft.Extensions.Http.Polly": "5.0.1",
+          "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": "1.10.14",
           "Play.Catalog.Contracts": "1.0.0",
-          "Play.Common": "1.0.3",
           "Swashbuckle.AspNetCore": "5.6.3",
           "Microsoft.AspNetCore.Antiforgery": "5.0.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions": "5.0.0.0",
@@ -340,6 +341,26 @@
         },
         "compile": {
           "lib/netstandard2.0/Automatonymous.dll": {}
+        }
+      },
+      "CMGeorges.Play.Common/1.0.3": {
+        "dependencies": {
+          "MassTransit.AspNetCore": "7.2.2",
+          "MassTransit.RabbitMQ": "7.2.2",
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "5.0.9",
+          "Microsoft.Extensions.Configuration": "5.0.0",
+          "Microsoft.Extensions.Configuration.Binder": "5.0.0",
+          "Microsoft.Extensions.DependencyInjection": "5.0.2",
+          "MongoDB.Driver": "2.13.1"
+        },
+        "runtime": {
+          "lib/net5.0/Play.Common.dll": {
+            "assemblyVersion": "1.0.3.0",
+            "fileVersion": "1.0.3.0"
+          }
+        },
+        "compile": {
+          "lib/net5.0/Play.Common.dll": {}
         }
       },
       "DnsClient/1.4.0": {
@@ -660,6 +681,7 @@
           "lib/netstandard2.0/Microsoft.OpenApi.dll": {}
         }
       },
+      "Microsoft.VisualStudio.Azure.Containers.Tools.Targets/1.10.14": {},
       "Microsoft.Win32.Primitives/4.3.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "2.1.2",
@@ -854,26 +876,6 @@
         },
         "compile": {
           "lib/net5.0/Play.Catalog.Contracts.dll": {}
-        }
-      },
-      "Play.Common/1.0.3": {
-        "dependencies": {
-          "MassTransit.AspNetCore": "7.2.2",
-          "MassTransit.RabbitMQ": "7.2.2",
-          "Microsoft.AspNetCore.Authentication.JwtBearer": "5.0.9",
-          "Microsoft.Extensions.Configuration": "5.0.0",
-          "Microsoft.Extensions.Configuration.Binder": "5.0.0",
-          "Microsoft.Extensions.DependencyInjection": "5.0.2",
-          "MongoDB.Driver": "2.13.1"
-        },
-        "runtime": {
-          "lib/net5.0/Play.Common.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        },
-        "compile": {
-          "lib/net5.0/Play.Common.dll": {}
         }
       },
       "Polly/7.1.0": {
@@ -3286,6 +3288,13 @@
       "path": "automatonymous/5.1.2",
       "hashPath": "automatonymous.5.1.2.nupkg.sha512"
     },
+    "CMGeorges.Play.Common/1.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-2w7g3ddwz9ktkODySrmE0M5/YRpyjDTnGoT2JwI4CXppLUe0rw8CyCP1VdUvm09l2YxBTY2BGY1gGyOdAHqryg==",
+      "path": "cmgeorges.play.common/1.0.3",
+      "hashPath": "cmgeorges.play.common.1.0.3.nupkg.sha512"
+    },
     "DnsClient/1.4.0": {
       "type": "package",
       "serviceable": true,
@@ -3524,6 +3533,13 @@
       "path": "microsoft.openapi/1.2.3",
       "hashPath": "microsoft.openapi.1.2.3.nupkg.sha512"
     },
+    "Microsoft.VisualStudio.Azure.Containers.Tools.Targets/1.10.14": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-vjweoaSTnMiJY4Ts4/9xHt3vStk36q8FRXxvwqSx7YjdXTbQE0i/JxncHeL6vsdE1+4sn6of2/eLQeGZ43eL2Q==",
+      "path": "microsoft.visualstudio.azure.containers.tools.targets/1.10.14",
+      "hashPath": "microsoft.visualstudio.azure.containers.tools.targets.1.10.14.nupkg.sha512"
+    },
     "Microsoft.Win32.Primitives/4.3.0": {
       "type": "package",
       "serviceable": true,
@@ -3593,13 +3609,6 @@
       "sha512": "sha512-tgxDBeHS5gr6dmPcOqCnZ8f7uee/6gUOxN483eW/5AP3izXVT276LJzzPxT9E3qjbcqRNw86X8mydiKgCfmsQg==",
       "path": "play.catalog.contracts/1.0.0",
       "hashPath": "play.catalog.contracts.1.0.0.nupkg.sha512"
-    },
-    "Play.Common/1.0.3": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-UvJ5wn2xkoNny8wmjVTSEh9UgiIQwNW+CcdTjt8vx1V4Xmp6/QaSGzvqWVLTelxjJ0qddN2z3ESvmMZ69+IxoQ==",
-      "path": "play.common/1.0.3",
-      "hashPath": "play.common.1.0.3.nupkg.sha512"
     },
     "Polly/7.1.0": {
       "type": "package",

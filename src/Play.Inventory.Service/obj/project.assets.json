@@ -14,6 +14,24 @@
           "lib/netstandard2.0/Automatonymous.dll": {}
         }
       },
+      "CMGeorges.Play.Common/1.0.3": {
+        "type": "package",
+        "dependencies": {
+          "MassTransit.AspNetCore": "7.2.2",
+          "MassTransit.RabbitMQ": "7.2.2",
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "5.0.9",
+          "Microsoft.Extensions.Configuration": "5.0.0",
+          "Microsoft.Extensions.Configuration.Binder": "5.0.0",
+          "Microsoft.Extensions.DependencyInjection": "5.0.2",
+          "MongoDB.Driver": "2.13.1"
+        },
+        "compile": {
+          "lib/net5.0/Play.Common.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Play.Common.dll": {}
+        }
+      },
       "DnsClient/1.4.0": {
         "type": "package",
         "compile": {
@@ -430,6 +448,13 @@
           "lib/netstandard2.0/Microsoft.OpenApi.dll": {}
         }
       },
+      "Microsoft.VisualStudio.Azure.Containers.Tools.Targets/1.10.14": {
+        "type": "package",
+        "build": {
+          "build/Microsoft.VisualStudio.Azure.Containers.Tools.Targets.props": {},
+          "build/Microsoft.VisualStudio.Azure.Containers.Tools.Targets.targets": {}
+        }
+      },
       "Microsoft.Win32.Primitives/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -627,24 +652,6 @@
         },
         "runtime": {
           "lib/net5.0/Play.Catalog.Contracts.dll": {}
-        }
-      },
-      "Play.Common/1.0.3": {
-        "type": "package",
-        "dependencies": {
-          "MassTransit.AspNetCore": "7.2.2",
-          "MassTransit.RabbitMQ": "7.2.2",
-          "Microsoft.AspNetCore.Authentication.JwtBearer": "5.0.9",
-          "Microsoft.Extensions.Configuration": "5.0.0",
-          "Microsoft.Extensions.Configuration.Binder": "5.0.0",
-          "Microsoft.Extensions.DependencyInjection": "5.0.2",
-          "MongoDB.Driver": "2.13.1"
-        },
-        "compile": {
-          "lib/net5.0/Play.Common.dll": {}
-        },
-        "runtime": {
-          "lib/net5.0/Play.Common.dll": {}
         }
       },
       "Polly/7.1.0": {
@@ -1927,6 +1934,18 @@
         "lib/netstandard2.0/Automatonymous.xml"
       ]
     },
+    "CMGeorges.Play.Common/1.0.3": {
+      "sha512": "2w7g3ddwz9ktkODySrmE0M5/YRpyjDTnGoT2JwI4CXppLUe0rw8CyCP1VdUvm09l2YxBTY2BGY1gGyOdAHqryg==",
+      "type": "package",
+      "path": "cmgeorges.play.common/1.0.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "cmgeorges.play.common.1.0.3.nupkg.sha512",
+        "cmgeorges.play.common.nuspec",
+        "lib/net5.0/Play.Common.dll"
+      ]
+    },
     "DnsClient/1.4.0": {
       "sha512": "CO1NG1zQdV0nEAXmr/KppLZ0S1qkaPwV0kPX5YPgmYBtrBVh1XMYHM54IXy3RBJu1k4thFtpzwo4HNHqxiuFYw==",
       "type": "package",
@@ -2592,6 +2611,85 @@
         "microsoft.openapi.nuspec"
       ]
     },
+    "Microsoft.VisualStudio.Azure.Containers.Tools.Targets/1.10.14": {
+      "sha512": "vjweoaSTnMiJY4Ts4/9xHt3vStk36q8FRXxvwqSx7YjdXTbQE0i/JxncHeL6vsdE1+4sn6of2/eLQeGZ43eL2Q==",
+      "type": "package",
+      "path": "microsoft.visualstudio.azure.containers.tools.targets/1.10.14",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "EULA.md",
+        "ThirdPartyNotices.txt",
+        "build/Container.props",
+        "build/Container.targets",
+        "build/Microsoft.VisualStudio.Azure.Containers.Tools.Targets.props",
+        "build/Microsoft.VisualStudio.Azure.Containers.Tools.Targets.targets",
+        "build/Rules/GeneralBrowseObject.xaml",
+        "build/Rules/cs-CZ/GeneralBrowseObject.xaml",
+        "build/Rules/de-DE/GeneralBrowseObject.xaml",
+        "build/Rules/es-ES/GeneralBrowseObject.xaml",
+        "build/Rules/fr-FR/GeneralBrowseObject.xaml",
+        "build/Rules/it-IT/GeneralBrowseObject.xaml",
+        "build/Rules/ja-JP/GeneralBrowseObject.xaml",
+        "build/Rules/ko-KR/GeneralBrowseObject.xaml",
+        "build/Rules/pl-PL/GeneralBrowseObject.xaml",
+        "build/Rules/pt-BR/GeneralBrowseObject.xaml",
+        "build/Rules/ru-RU/GeneralBrowseObject.xaml",
+        "build/Rules/tr-TR/GeneralBrowseObject.xaml",
+        "build/Rules/zh-CN/GeneralBrowseObject.xaml",
+        "build/Rules/zh-TW/GeneralBrowseObject.xaml",
+        "build/ToolsTarget.props",
+        "build/ToolsTarget.targets",
+        "icon.png",
+        "microsoft.visualstudio.azure.containers.tools.targets.1.10.14.nupkg.sha512",
+        "microsoft.visualstudio.azure.containers.tools.targets.nuspec",
+        "tools/Microsoft.VisualStudio.Containers.Tools.Common.dll",
+        "tools/Microsoft.VisualStudio.Containers.Tools.Shared.dll",
+        "tools/Microsoft.VisualStudio.Containers.Tools.Tasks.dll",
+        "tools/Newtonsoft.Json.dll",
+        "tools/cs/Microsoft.VisualStudio.Containers.Tools.Common.resources.dll",
+        "tools/cs/Microsoft.VisualStudio.Containers.Tools.Shared.resources.dll",
+        "tools/cs/Microsoft.VisualStudio.Containers.Tools.Tasks.resources.dll",
+        "tools/de/Microsoft.VisualStudio.Containers.Tools.Common.resources.dll",
+        "tools/de/Microsoft.VisualStudio.Containers.Tools.Shared.resources.dll",
+        "tools/de/Microsoft.VisualStudio.Containers.Tools.Tasks.resources.dll",
+        "tools/es/Microsoft.VisualStudio.Containers.Tools.Common.resources.dll",
+        "tools/es/Microsoft.VisualStudio.Containers.Tools.Shared.resources.dll",
+        "tools/es/Microsoft.VisualStudio.Containers.Tools.Tasks.resources.dll",
+        "tools/fr/Microsoft.VisualStudio.Containers.Tools.Common.resources.dll",
+        "tools/fr/Microsoft.VisualStudio.Containers.Tools.Shared.resources.dll",
+        "tools/fr/Microsoft.VisualStudio.Containers.Tools.Tasks.resources.dll",
+        "tools/it/Microsoft.VisualStudio.Containers.Tools.Common.resources.dll",
+        "tools/it/Microsoft.VisualStudio.Containers.Tools.Shared.resources.dll",
+        "tools/it/Microsoft.VisualStudio.Containers.Tools.Tasks.resources.dll",
+        "tools/ja/Microsoft.VisualStudio.Containers.Tools.Common.resources.dll",
+        "tools/ja/Microsoft.VisualStudio.Containers.Tools.Shared.resources.dll",
+        "tools/ja/Microsoft.VisualStudio.Containers.Tools.Tasks.resources.dll",
+        "tools/ko/Microsoft.VisualStudio.Containers.Tools.Common.resources.dll",
+        "tools/ko/Microsoft.VisualStudio.Containers.Tools.Shared.resources.dll",
+        "tools/ko/Microsoft.VisualStudio.Containers.Tools.Tasks.resources.dll",
+        "tools/pl/Microsoft.VisualStudio.Containers.Tools.Common.resources.dll",
+        "tools/pl/Microsoft.VisualStudio.Containers.Tools.Shared.resources.dll",
+        "tools/pl/Microsoft.VisualStudio.Containers.Tools.Tasks.resources.dll",
+        "tools/pt-BR/Microsoft.VisualStudio.Containers.Tools.Common.resources.dll",
+        "tools/pt-BR/Microsoft.VisualStudio.Containers.Tools.Shared.resources.dll",
+        "tools/pt-BR/Microsoft.VisualStudio.Containers.Tools.Tasks.resources.dll",
+        "tools/ru/Microsoft.VisualStudio.Containers.Tools.Common.resources.dll",
+        "tools/ru/Microsoft.VisualStudio.Containers.Tools.Shared.resources.dll",
+        "tools/ru/Microsoft.VisualStudio.Containers.Tools.Tasks.resources.dll",
+        "tools/tr/Microsoft.VisualStudio.Containers.Tools.Common.resources.dll",
+        "tools/tr/Microsoft.VisualStudio.Containers.Tools.Shared.resources.dll",
+        "tools/tr/Microsoft.VisualStudio.Containers.Tools.Tasks.resources.dll",
+        "tools/utils/KillProcess.exe",
+        "tools/zh-Hans/Microsoft.VisualStudio.Containers.Tools.Common.resources.dll",
+        "tools/zh-Hans/Microsoft.VisualStudio.Containers.Tools.Shared.resources.dll",
+        "tools/zh-Hans/Microsoft.VisualStudio.Containers.Tools.Tasks.resources.dll",
+        "tools/zh-Hant/Microsoft.VisualStudio.Containers.Tools.Common.resources.dll",
+        "tools/zh-Hant/Microsoft.VisualStudio.Containers.Tools.Shared.resources.dll",
+        "tools/zh-Hant/Microsoft.VisualStudio.Containers.Tools.Tasks.resources.dll"
+      ]
+    },
     "Microsoft.Win32.Primitives/4.3.0": {
       "sha512": "9ZQKCWxH7Ijp9BfahvL2Zyf1cJIk8XYLF6Yjzr2yi0b2cOut/HQ31qf1ThHAgCc3WiZMdnWcfJCgN82/0UunxA==",
       "type": "package",
@@ -2830,17 +2928,6 @@
         "lib/net5.0/Play.Catalog.Contracts.dll",
         "play.catalog.contracts.1.0.0.nupkg.sha512",
         "play.catalog.contracts.nuspec"
-      ]
-    },
-    "Play.Common/1.0.3": {
-      "sha512": "UvJ5wn2xkoNny8wmjVTSEh9UgiIQwNW+CcdTjt8vx1V4Xmp6/QaSGzvqWVLTelxjJ0qddN2z3ESvmMZ69+IxoQ==",
-      "type": "package",
-      "path": "play.common/1.0.3",
-      "files": [
-        ".nupkg.metadata",
-        "lib/net5.0/Play.Common.dll",
-        "play.common.1.0.3.nupkg.sha512",
-        "play.common.nuspec"
       ]
     },
     "Polly/7.1.0": {
@@ -6496,10 +6583,11 @@
   },
   "projectFileDependencyGroups": {
     "net5.0": [
+      "CMGeorges.Play.Common >= 1.0.3",
       "Microsoft.AspNet.WebApi.Client >= 5.2.7",
       "Microsoft.Extensions.Http.Polly >= 5.0.1",
+      "Microsoft.VisualStudio.Azure.Containers.Tools.Targets >= 1.10.14",
       "Play.Catalog.Contracts >= 1.0.0",
-      "Play.Common >= 1.0.3",
       "Swashbuckle.AspNetCore >= 5.6.3"
     ]
   },
@@ -6511,11 +6599,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\camsl\\Documents\\Code\\Play\\Play.Inventory\\src\\Play.Inventory.Service\\Play.Inventory.Service.csproj",
+      "projectUniqueName": "F:\\camsl\\Documents\\Code\\Udemy\\BuildingMicroserviceSecurityIdentity\\Play.Infra\\Play.Inventory\\src\\Play.Inventory.Service\\Play.Inventory.Service.csproj",
       "projectName": "Play.Inventory.Service",
-      "projectPath": "F:\\camsl\\Documents\\Code\\Play\\Play.Inventory\\src\\Play.Inventory.Service\\Play.Inventory.Service.csproj",
+      "projectPath": "F:\\camsl\\Documents\\Code\\Udemy\\BuildingMicroserviceSecurityIdentity\\Play.Infra\\Play.Inventory\\src\\Play.Inventory.Service\\Play.Inventory.Service.csproj",
       "packagesPath": "C:\\Users\\camsl\\.nuget\\packages\\",
-      "outputPath": "F:\\camsl\\Documents\\Code\\Play\\Play.Inventory\\src\\Play.Inventory.Service\\obj\\",
+      "outputPath": "F:\\camsl\\Documents\\Code\\Udemy\\BuildingMicroserviceSecurityIdentity\\Play.Infra\\Play.Inventory\\src\\Play.Inventory.Service\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -6551,6 +6639,10 @@
       "net5.0": {
         "targetAlias": "net5.0",
         "dependencies": {
+          "CMGeorges.Play.Common": {
+            "target": "Package",
+            "version": "[1.0.3, )"
+          },
           "Microsoft.AspNet.WebApi.Client": {
             "target": "Package",
             "version": "[5.2.7, )"
@@ -6559,13 +6651,13 @@
             "target": "Package",
             "version": "[5.0.1, )"
           },
+          "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
+            "target": "Package",
+            "version": "[1.10.14, )"
+          },
           "Play.Catalog.Contracts": {
             "target": "Package",
             "version": "[1.0.0, )"
-          },
-          "Play.Common": {
-            "target": "Package",
-            "version": "[1.0.3, )"
           },
           "Swashbuckle.AspNetCore": {
             "target": "Package",
