@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -17,7 +18,10 @@ namespace Play.Inventory.Service.Controllers
     public class ItemsController : ControllerBase
     {
 
-        #region Attributes
+        #region Const
+        private const string AdminRole = "Admin";
+        #endregion
+        #region Fields
 
         private readonly IRepository<InventoryItem> _inventoryItemsRepository;
         private readonly IRepository<CatalogItem> _catalogItemsRepository;
@@ -44,6 +48,16 @@ namespace Play.Inventory.Service.Controllers
                 return BadRequest();
             }
 
+            var currentUserId = User.FindFirstValue("sub");
+            
+            if (Guid.Parse(currentUserId) != userId)//Verify the Role
+            {
+                if (!User.IsInRole(AdminRole))
+                {
+                    return Unauthorized();
+                }
+            }
+
             var inventoryItemEntities = await _inventoryItemsRepository.GetAllAsync(item => item.UserId == userId);
             //Gettings all CatalogItems from the local 
             var itemIds = inventoryItemEntities.Select(item => item.CatalogItemId);
@@ -60,6 +74,7 @@ namespace Play.Inventory.Service.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = AdminRole)]
         public async Task<ActionResult> PostAsync(GrantItemsDto grantItemsDto)
         {
             var inventoryItem = await _inventoryItemsRepository.GetAsync(
